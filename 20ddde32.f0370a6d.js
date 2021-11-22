@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{76:function(o){o.exports=JSON.parse('{"allTagsPath":"/godwoken-review/blog/tags","slug":"hello","name":"hello","count":2,"permalink":"/godwoken-review/blog/tags/hello"}')}}]);
