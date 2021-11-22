@@ -472,16 +472,16 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
 
       Example:
 
-         ```json title="/godwoken/deploy/scripts-build.json"
-         {
-             "prebuild_image": "nervos/godwoken-prebuilds:v0.6.9-rc1",
-             "repos": {
-                 "godwoken_scripts": "https://github.com/nervosnetwork/godwoken-scripts#master",
-                 "godwoken_polyjuice": "https://github.com/nervosnetwork/godwoken-polyjuice#main",
-                 "clerkb": "https://github.com/nervosnetwork/clerkb#v0.4.0"
-             }
-         } 
-         ```
+      ```json title="/godwoken/deploy/scripts-build.json"
+      {
+          "prebuild_image": "nervos/godwoken-prebuilds:v0.6.9-rc1",
+          "repos": {
+              "godwoken_scripts": "https://github.com/nervosnetwork/godwoken-scripts#master",
+              "godwoken_polyjuice": "https://github.com/nervosnetwork/godwoken-polyjuice#main",
+              "clerkb": "https://github.com/nervosnetwork/clerkb#v0.4.0"
+          }
+      } 
+      ```
 
       For more information about the tags of the `prebuild_image`, see [nervos/godwoken-prebuilds](https://hub.docker.com/r/nervos/godwoken-prebuilds/tags?page=1&ordering=last_updated).
 
@@ -617,7 +617,7 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
 
       Example:
 
-      ```typescript
+      ```typescript title="/godwoken-web3/packages/api-server/knexfile.ts"
       import dotenv from "dotenv";
       dotenv.config({path: "./.env"})
       
