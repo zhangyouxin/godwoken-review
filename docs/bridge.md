@@ -6,8 +6,8 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 For deposit and withdrawal operations on Godwoken, two options are available:
 
-1. Using an UI deposit or withdraw provided by [yokaiswap](https://testnet.yokaiswap.com/bridge/deposit) to perform the relevant actions.
-2. Using `gw-tools` deposit or withdraw to perform the relevant actions.
+1. Using a UI deposit or withdrawal provided by [yokaiswap](https://testnet.yokaiswap.com/bridge/deposit) to perform the relevant actions.
+2. Using `gw-tools` deposit or withdrawal to perform the relevant actions.
 
 ---
 
@@ -20,7 +20,7 @@ cargo run --bin gw-tools -- deposit-ckb --help
 ```
 
 <details>
-<summary>Click to view detailed output</summary>
+<summary>Click to view the detailed output</summary>
 
 ```
 gw-tools-deposit-ckb
@@ -56,12 +56,12 @@ For more information on the CKB RPC, refer to [CKB Wiki](https://github.com/nerv
 
 |command|description|
 |---|---|
-|capacity          |The amount of ckb to deposit, the unit is ckb|
-|ckb-rpc           |ckb node URL, defaults to http://127.0.0.1:8114/|
-|config-path          |The config.toml file required for godwoken to run|
-|eth-address          |Target eth address to deposit|
-|fee          |The transaction fee, this is a ckb transaction and the default rate is 0.0001 ckb|
-|godwoken-rpc-url          |The RPC address of Godwoken, by default http://127.0.0.1:8119/|
+|capacity          |The amount of CKB to deposit (unit:  CKB)|
+|ckb-rpc           |CKB node URL that defaults to http://127.0.0.1:8114/|
+|config-path          |The config.toml file required for Godwoken to run|
+|eth-address          |The target eth address to deposit|
+|fee          |The transaction fee in a CKB transaction (The default rate is 0.0001 CKB.)|
+|godwoken-rpc-url          |The RPC address of Godwoken that defaults to http://127.0.0.1:8119/|
 |privkey-path          |A file written with the private key (hex string) which is used to pay the deposit fee|
 |scripts-deployment-path          |json file path of the [script's deployment results](https://github.com/nervosnetwork/godwoken-public/blob/master/testnet/config/scripts-deploy-result.json)|
 
@@ -76,7 +76,7 @@ cargo run --bin gw-tools -- withdraw --help
 ```
 
 <details>
-<summary>Click to view detailed output</summary>
+<summary>Click to view the detailed output</summary>
 
 
 ```
@@ -95,7 +95,7 @@ OPTIONS:
 	 -c, --capacity <capacity>		CKB capacity to withdrawal
 	 -o, --config-path <config-path>	The config.homl file path
 	 -g, --godwoken-rpc-url <godwoken-rpc-url>
-	 					Godwoken jsonrpc rpc sever URL [default: http://127.0.0.1:8119]
+	 					Godwoken jsonrpc rpc server URL [default: http://127.0.0.1:8119]
 
 	 -a, --owner-ckb-address <owner-ckb-address>	owner ckb address (to)
 	 -k, --privkey-path <privkey-path>	The private key file path
@@ -114,10 +114,10 @@ For more information on Godwoken RPC, refer to [Godwoken Public Network](/#godwo
 |command|description|
 |---|---|
 |amount             |The amount of sUDT|
-|capacity             |The amount of ckb to withdraw, the unit is ckb|
-|config-path             |The config.toml file required for godwoken to run|
-|godwoken-rpc-url             |The RPC address of Godwoken, by default http://127.0.0.1:8119/|
-|owner-ckb-address             |ckb address of the recipient|
+|capacity             |The amount of CKB to withdraw (unit: CKB)|
+|config-path             |The config.toml file required for Godwoken to run|
+|godwoken-rpc-url             |The RPC address of Godwoken that defaults to http://127.0.0.1:8119/|
+|owner-ckb-address             |CKB address of the recipient|
 |privkey-path             |A file written with the private key (hex string) which is used to pay the deposit fee|
 |scripts-deployment-path             |json file path of the [script's deployment results](https://github.com/nervosnetwork/godwoken-public/blob/master/testnet/config/scripts-deploy-result.json)|
-|sudt-script-hash             |The script hash of sudt on Layer 1, defaults to 0x0000000000000000000000000000000000000000000000000000, indicating only ckb is redeemed (amount left unfilled or filled with 0)|
+|sudt-script-hash             |The script hash of sudt on Layer 1 that defaults to 0x0000000000000000000000000000000000000000000000000000, indicating only CKB is redeemed (amount left unfilled or filled with 0)|
