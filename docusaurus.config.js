@@ -2,8 +2,8 @@
 module.exports = {
   title: 'Godwoken Documentation',
   tagline: 'Godwoken Documentation',
-  url: 'https://github.com/xying21/godwoken-review',
-  baseUrl: '/',
+  url: 'https://github.com/xying21',
+  baseUrl: '/godwoken-review/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
