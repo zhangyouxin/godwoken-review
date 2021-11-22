@@ -487,15 +487,15 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
 
    - `setup-config.json`: The file provides configurations for the Rollup.
 
-      - `l1_sudt_script_type_hash`: The `data_hash` of the deployed SUDT script.
-      - `tx_hash` (under `l1_sudt_cell_dep`): The `tx_hash` of the deployed SUDT script.
-      - `cells_lock`: `cells_lock` is used to unlock/upgrade Rollup scripts. 
-      - `reward_lock`: `reward_lock` is used to receive challenge rewards. 
+      - *`l1_sudt_script_type_hash`: The `data_hash` of the deployed SUDT script.
+      - *`tx_hash` (under `l1_sudt_cell_dep`): The `tx_hash` of the deployed SUDT script.
+      - *`cells_lock`: `cells_lock` is used to unlock/upgrade Rollup scripts. 
+      - *`reward_lock`: `reward_lock` is used to receive challenge rewards. 
       - `burn_lock`: `burn_lock` is used to receive burned assets that can be unlocked.
 
       :::note
 
-      The file must be configured with correct SUDT script to deposit SUDT successfully.
+      The parameters marked with * must be configured with correct values to deploy Godwoken successfully.
 
       :::
 
@@ -520,7 +520,7 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
         "reward_lock": {
           "code_hash": "0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8",
           "hash_type": "type",
-          "args": "0x1eb6190f883e11a2a67bcfac9533b0a84f50ddfb"
+          "args": "0x4ca5cf8a6339e89b6f80846f25c72c4fe0702daa"
         },
         "burn_lock": {
           "code_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
@@ -539,13 +539,13 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
    $ cd godwoken
    $ RUST_LOG=info cargo +nightly run --bin gw-tools setup -n 2 -k deploy/pk --network devnet --scripts-build-config deploy/build-scripts.json -c deploy/setup-config.json
    ```
-   
+
    This setup command compiles Godwoken scripts, deploys the scripts and layer 2 genesis blocks, and generates configuration files for the Godwoken nodes.  
-   
+
    The deployment requires approximately 10 minutes to complete depending on network connection.
-   
+
    Output Example:
-   
+
    ```
    ...
    2021-11-19T06:22:47Z INFO  gw_tools::deploy_genesis] tx_hash: 0x4ec4532a4b8c7d799ef30d36df413f1e4aa05402336a3df53b4f9afa5baf52cd
@@ -554,41 +554,8 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
    [2021-11-19T06:22:57Z INFO  gw_tools::utils::transaction] tx commited
    [2021-11-19T06:22:57Z INFO  gw_tools::setup] Finish
    ```
-   
-7. Configure the receiver lock.
 
-   After the setup command is completed, a `config.toml` file is generated under `/godwoken/output/node1` and `/godwoken/output/node2`, and a `scripts-deploy-result.json` file is generated under `/godwoken/output`.
-
-   1. Download the [config generator](https://github.com/classicalliu/lumos-config-generator/releases/download/v0.1.1/lumos-config-generator-linux-amd64) tool and generate the `config.json` file for the CKB chain.
-
-      :::note
-
-      The CKB node must be running when executing the generator to generate the config file.
-
-      :::
-
-      To generate the `config.json` file in the project root directory:
-   
-      ```bash
-      $ ./lumos-config-generator-linux-amd64 config.json http://127.0.0.1:8114
-      ```
-      
-   2. Assign a receiver lock in the node's `config.toml` file. 
-
-      The code_hash of the receiver lock is the CODE_HASH of the SECP256K1_BLAKE160 script from the `config.json` file.
-
-      The args is the lock args of the deployment cells owner.
-
-      Example:
-   
-      ```toml title="config.toml"
-      [block_producer.challenger_config.rewards_receiver_lock]
-      code_hash = '0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8'
-      hash_type = 'type'
-      args = '0x1eb6190f883e11a2a67bcfac9533b0a84f50ddfb'
-      ```
-   
-8. Start the Godwoken nodes.
+7. Start the Godwoken nodes.
 
    :::note
 
@@ -604,80 +571,97 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
    $ RUST_LOG=info cargo +nightly run --bin godwoken run -c output/node1/config.toml
    ```
 
-   If an error about the use of unstable library feature is encountered during the process, try the following commands to fix the issue:
+8. Start the web3 server.
 
-   ```bash
-   $ cargo install cargo-edit
-   $ cargo upgrade --workspace num-bigint
-   ```
+   1. Create a PostgreSQL instance.
 
-9. Set up Polyjuice.
+      ```shell
+      $ docker run --name postgres -e POSTGRES_USER=user -e POSTGRES_DB=godwoken -e POSTGRES_PASSWORD=mypassword -d -p 5432:5432 postgres
+      ```
 
-   Clone the source of godwoken-examples. For more information, see [godwoken-examples](https://github.com/nervosnetwork/godwoken-examples).
+   2. Install Redis Server.
 
-   ```bash
-   $ git clone --recursive https://github.com/nervosnetwork/godwoken-examples
-   ```
+         ```shell
+         $ sudo apt install redis-server
+         ```
 
-   Then, create an account on Polyjuice. It will take some time to build index for the first time. 
+   3. Clone the source of [godwoken-web3](https://github.com/nervosnetwork/godwoken-web3).
 
-   ```bash
-   $ cd godwoken-examples
-   $ yarn && yarn run build-all
-   # export SCRIPT_DEPLOY_RESULT_PATH=<Path to scripts-deploy-result.json>
-   $ export SCRIPT_DEPLOY_RESULT_PATH=~/godwoken/deploy/scripts-deploy-result.json
-   # export GODWOKEN_CONFIG_PATH=<Path to godwoken config.toml>
-   $ export GODWOKEN_CONFIG_PATH=~/godwoken/deploy/node1/config.toml
-   $ yarn run copy-configs
-   # LUMOS_CONFIG_FILE=<Path to config.json> node ./packages/tools/lib/account-cli.js deposit -c 40000000000 -p <privkey>
-   $ LUMOS_CONFIG_FILE=~/config.json node ./packages/tools/lib/account-cli.js deposit -c 40000000000 -p 0xca02cc4b8e0e447e243204dd2e16a1692026bfdd4add502b203975999d3a6909
-   ```
+         ```shell
+         $ git clone https://github.com/nervosnetwork/godwoken-web3
+         ```
 
-   For more information about generating the Lumos config file for DEV chain, see [Generate the config.json file for the DEV chain](https://cryptape.github.io/lumos-doc/docs/guides/config#step-1-generate-the-configjson-file-for-the-dev-chain).
+   4. Prepare the `.env` file under `/godwoken-web3/packages/api-server`.
 
-10. Start the web3 server.
+         Refer to the .json files generated by the Godwoken setup command under the `godwoken/output` folder for the settings of the `.env` file.
 
-   11. Create a PostgreSQL instance.
+         Example:
 
-       ```bash
-       $ docker run --name postgres -e POSTGRES_USER=user -e POSTGRES_DB=godwoken -e POSTGRES_PASSWORD=mypassword -d -p 5432:5432 postgres
-       ```
+         ```shell
+         $ cd godwoken-web3
+         $ cat > ./packages/api-server/.env <<EOF
+         DATABASE_URL=postgres://user:mypassword@localhost:5432/godwoken
+         GODWOKEN_JSON_RPC=http://localhost:8119
+         ETH_ACCOUNT_LOCK_HASH=0x4e4bfdeb6c832291cb8b7cbeabd848257b3a1e326250c7a87963ca1999cd4ba3
+         ROLLUP_TYPE_HASH=0xc964cb302e13327ddf8ddfee2eb3e954baa33341353fc82a8f364505fae12308
+         CHAIN_ID=1024777
+         CREATOR_ACCOUNT_ID=3
+         DEFAULT_FROM_ADDRESS=0x1eb6190f883e11a2a67bcfac9533b0a84f50ddfb
+         POLYJUICE_VALIDATOR_TYPE_HASH=0xa97661faaf072948bf488f61cc4b55e517af44a79f92a8fb36eae661c1079fa9
+         L2_SUDT_VALIDATOR_SCRIPT_TYPE_HASH=0x010ad7ad6a0c07377651da3955dde9c7b9f252593e5fc54b35d031597215d484
+         TRON_ACCOUNT_LOCK_HASH=0x99715cb7ecc54d10b539d29456301330de65cf4bc26bd64326748e7b61be3b44
+         EOF
+         ```
 
-   12. Clone the source of [godwoken-web3](https://github.com/nervosnetwork/godwoken-web3).
+   5. Create a `knexfile.ts` file under `godwoken-web3/packages/api-server`.
 
-       ```bash
-       $ git clone https://github.com/nervosnetwork/godwoken-web3
-       ```
+      Example:
 
-   13. Prepare the `.env` file under `/godwoken-web3/packages/api-server`.
-
-       ```bash
-       $ cd godwoken-web3
-       $ cat > ./packages/api-server/.env <<EOF
-       DATABASE_URL=postgres://user:password@postgres:5432/godwoken
-       GODWOKEN_JSON_RPC=http://godwoken:8119
-       ETH_ACCOUNT_LOCK_HASH=<Eth Account Lock Code Hash>
-       ROLLUP_TYPE_HASH=<Rollup Type Hash>
-       PORT=8024
-       CHAIN_ID=1024777
-       CREATOR_ACCOUNT_ID=3
-       DEFAULT_FROM_ADDRESS=0x1eb6190f883e11a2a67bcfac9533b0a84f50ddfb
-       POLYJUICE_VALIDATOR_TYPE_HASH=<Polyjuice Validator Code Hash>
-       L2_SUDT_VALIDATOR_SCRIPT_TYPE_HASH=<L2 Sudt Validator Code Hash>
-       TRON_ACCOUNT_LOCK_HASH=<Tron Account Lock Code Hash>
-       EOF
-       ```
-
-   14. Start the web3 server.
-
-       To start the web3 server properly, make sure to clear the postgres database, and then run the migration SQL file to recreate the tables before running the server:
-
-       ```bash
-       $ yarn
-       $ yarn run migrate:latest
-       $ yarn run build:godwoken
-       $ yarn run start
-       ```
+      ```typescript
+      import dotenv from "dotenv";
+      dotenv.config({path: "./.env"})
+      
+      const knexConfig = {
+        development: {
+          client: "postgresql",
+          connection: {
+            database: 'godwoken',
+            user:     'user',
+            password: 'mypassword'
+          },
+          pool: {
+            min: 2,
+            max: 10
+          },
+          migrations: {
+            tableName: "knex_migrations"
+          }
+        }
+      };
+      
+      export default knexConfig;
+      ```
+      
+   6. Start the web3 server.
+   
+      To start the web3 server properly, make sure to clear the postgres database, and then run the migration SQL file to recreate the tables before running the server:
+   
+      ```shell
+      $ yarn
+      $ yarn run migrate:latest
+      $ yarn run build:godwoken
+      $ yarn run start
+      ```
+   
+      The web3 connection settings are as follows:
+   
+      ```
+      //The default port is 3000. 
+      //The port can be configured in the .env file by the `PORT` parameter.
+      RPC URL=http://localhost:3000 
+      CHAIN ID=1024777
+      ```
+   
 
 ## How to Use Godwoken
 
@@ -687,7 +671,7 @@ The current user must have permissions to run ckb-cli, Capsule, Moleculec and do
 
 2. Choose Godwoken testnet or mainnet network, or deploy a local Godwoken network.
 
-   For more information about Godwoken networks, see [Godwoken Networks](#godwoken-networks).
+   For more information about Godwoken public networks, see [Godwoken Public Network](/#godwoken-public-networks).
 
    For more information about deploying a Godwoken network, see the sections under Deployment.
 
