@@ -158,7 +158,7 @@ Options:
   -s, --sudt-script-args <l1 sudt script args>		only for unlock sudt
   -r, --rpc <rpc>					ckb rpc path (default: "http://127.0.0.1:8114")
   -d, --indexer-path <path>				indexer path (default: "./indexer-data-path/<ckb genesis hash>")
-  -h, --help					display help for command
+  -h, --help						display help for command
  ```
  </details>
 
