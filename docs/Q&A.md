@@ -1,7 +1,14 @@
-Q&A.md
+---
+id: qa
+title: Q&A
+---
 
-Q: We have received plenty of user queries with the Yokai IDO over the last couple of days. Inquiries in the community are currently focused on " why is it so easy to switch from Layer 1 to Layer 2 but why does it take so long in reverse?", and "why it requires an amount of 63 CKBs to an intermediate address to move funds back to Layer 1 when using Yokai ".
+We have received plenty of user queries with the Yokai IDO over the last couple of days. Inquiries in the community are currently focused on " why is it so easy to switch from Layer 1 to Layer 2 but why does it take so long in reverse?", and "why it requires an amount of 63 CKBs to an intermediate address to move funds back to Layer 1 when using Yokai ".
 
-On why it takes so long on the reverse side: Godwoken is an optimistic rollup, and this is the outcome of the optimistic rollup technical route. In the process of withdrawal to L1, there is a challenge period that allows users to challenge problematic withdrawals, in this way to guarantee that every withdrawal is intact and that the L2 funds are safe. For example, arbitrum and optimism, which are also optimistic rollups, also have such a challenge period and are longer, i. e. arbitrum is 7 days. A better withdrawal experience will be available soon through LP and other approaches.
+**Q**: Why is it so easy to switch from Layer 1 to Layer 2 but why does it take so long in reverse?
 
-This is a constraint of the Godwoken current version, because it requires a cell on the Layer 1 to act as a authenticator against the withdrawing user's identity, and by having the user provide this L1 cell unlock signature to prove that the user is authentic and can receive the corresponding withdrawal funds. Godwoken is the first rollup running on the UTXO model worldwide, the answer is not ready-made and some of the designs were concessions given the time constraints. However, a better design solution has been devised and this restriction will be optimized in a later release.
+**A**: Godwoken is an optimistic rollup, and this is the outcome of the optimistic rollup technical route. In the process of withdrawal to L1, there is a challenge period that allows users to challenge problematic withdrawals, in this way to guarantee that every withdrawal is intact and that the L2 funds are safe. For example, arbitrum and optimism, which are also optimistic rollups, also have such a challenge period and are longer, i. e. arbitrum is 7 days. A better withdrawal experience will be available soon through LP and other approaches.
+
+**Q**: Why it requires an amount of 63 CKBs to an intermediate address to move funds back to Layer 1 when using Yokai 
+
+**A**: This is a constraint of the Godwoken current version, because it requires a cell on the Layer 1 to act as a authenticator against the withdrawing user's identity, and by having the user provide this L1 cell unlock signature to prove that the user is authentic and can receive the corresponding withdrawal funds. Godwoken is the first rollup running on the UTXO model worldwide, the answer is not ready-made and some of the designs were concessions given the time constraints. However, a better design solution has been devised and this restriction will be optimized in a later release.
