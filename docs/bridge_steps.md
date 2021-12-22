@@ -1,5 +1,5 @@
 ---
-id: steps
+id: deposit_withdrawal_steps
 title: Using tools to deposit, withdraw and unlock Funds on Godwoken
 ---
 
@@ -41,7 +41,7 @@ To unlock the withdrawal cells to normal ckb cells and to perform common Layer2 
 ```
 LUMOS_CONFIG_FILE=./kicker-lumos-config.json node ./packages/tools/lib/account-cli.js unlock --help
 Usage: account-cli unlock [options]
-``` 
+```
 
 Note: If `[INFO]: withdrawal cell not finalized` showed, it means that the five day challenge period has not been completed. 
 
