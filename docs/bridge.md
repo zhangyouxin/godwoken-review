@@ -52,9 +52,6 @@ OPTIONS:
 ```
 </details>
 
-
-Note: 
-
 For more information on the CKB RPC, refer to [CKB Wiki](https://github.com/nervosnetwork/ckb/wiki/Chains)
 
 ### <code>gw-tool deposit</code> Subcommands
@@ -133,9 +130,7 @@ For more information on `Godwoken RPC`, refer to [Godwoken Public Network](/#god
 
 ## **Unlocking** the Funds to Complete Withdrawal Process
 
-Withdrawing funds from Godwoken is a **two-step** process. Step one initiates the withdrawal and step two releases the funds. 
-
-Godwoken uses an optimistic rollup architecture that permits only one honest node in the network. All this provides a very secure foundation for Layer 2, but comes at the cost of a **5-day** 'challenge period' when exiting from Layer 2. This is a period where the Layer 2 network operator gets time to examine and flag up any potential problems with malicious transactions and roll back if necessary. The five-day challenge period will begin once the withdrawal process has commenced. The five-day time interval is a bit long but necessary. 
+Withdrawing funds from Godwoken is a **two-step** process. Step one initiates the withdrawal and step two releases the funds. Godwoken uses an optimistic rollup architecture that permits only one honest node in the network. All this provides a very secure foundation for Layer 2, but comes at the cost of a **5-day** 'challenge period' when exiting from Layer 2. This is a period where the Layer 2 network operator gets time to examine and flag up any potential problems with malicious transactions and roll back if necessary. The five-day challenge period will begin once the withdrawal process has commenced. The five-day time interval is a bit long but necessary. 
 
 To `unlock` the withdrawal cells to normal ckb cells and to perform common Layer2 actions, the [`account-cli tool`](https://github.com/nervosnetwork/godwoken-examples/tree/develop/packages/tools) will be applied. 
 
@@ -189,4 +184,4 @@ For more information on `Lumos`, please refer to https://github.com/nervosnetwor
 
 ## Code Example
 
-For developers who need additional code details, refer to this repository for more detailed examples：https://github.com/classicalliu/gw-demos 。
+For developers who need additional code details, refer to [gw-demos](https://github.com/classicalliu/gw-demos) for more detailed examples.
