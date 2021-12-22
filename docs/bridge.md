@@ -134,7 +134,7 @@ For more information on `Godwoken RPC`, refer to [Godwoken Public Network](/#god
 |scripts-deployment-path             |The JSON file path of the [script's deployment results](https://github.com/nervosnetwork/godwoken-public/blob/master/testnet/config/scripts-deploy-result.json)|
 |sudt-script-hash             |The script hash of sUDT on layer 1, defaults to 0x0000000000000000000000000000000000000000000000000000, indicating only CKB is redeemed (amount left unfilled or filled with 0).|
 
-## Unlocking the Funds to Complete Withdrawal Process
+## **Unlocking** the Funds to Complete Withdrawal Process
 
 Withdrawing funds from Godwoken is a **two-step** process. Step one initiates the withdrawal and step two releases the funds. 
 
@@ -176,7 +176,7 @@ Options:
 ```
  </details>
 
-Note: The private key you pass to `unlock` command needs to be the same as the one that corresponds with the Layer 1 address that was previously used with the `withdraw` and `deposit.
+Note: The private key you pass to `unlock` command needs to be the same as the one that corresponds with the Layer 1 address that was previously used with the `withdraw` and `deposit`.
 
  ### <code>account-cli unlock</code> Subcommands
 
