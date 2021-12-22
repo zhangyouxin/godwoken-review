@@ -7,9 +7,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 For deposit and withdrawal operations on Godwoken, two options are available:
 
 1. Using a UI deposit or withdrawal provided by [yokaiswap](https://testnet.yokaiswap.com/bridge/deposit) to perform the relevant actions.
-2. Using `gw-tools` deposit or withdrawal to perform the relevant actions.
-
-And the unlocking operation so as to complete the withdrawal process.
+2. Using `gw-tools` deposit or withdrawal to perform the relevant actions, and the unlocking operation so as to complete the withdrawal process.
 
 ---
 
