@@ -13,9 +13,9 @@ For deposit and withdrawal operations on Godwoken, two options are available:
 
 ## Using GW-tools to Deposit
 
-To deposit CKBs onto Layer 2, execute the following command in the proper directory: 
+To `deposit CKBs onto Layer 2, execute the following command in the proper directory: 
 
-Use `--help` to view the available commands.
+	Use `--help` to view the available commands.
 
 ```shell
 cargo run --bin gw-tools -- deposit-ckb --help
@@ -54,7 +54,9 @@ OPTIONS:
 
 Replace with the values matching one's own account and information. 
 
+```shell
 Note: If the user applied the quick mode with godwoken-kicker, which already has a deposit function, the user can carry out the deposit operation directly on https://localhost:6100/.
+```
 
 For more information on the CKB RPC, refer to [CKB Wiki](https://github.com/nervosnetwork/ckb/wiki/Chains)
 
@@ -181,3 +183,5 @@ Note: The private key you pass to `unlock` command needs to be the same as the o
 |sudt-script-args		|Layer1 sudt script args, or sudt token|
 |rpc 			|The rpc address of CKB, with a default value|
 |indexer-path 		|The path of Lumos indexer, with a default value, no need to fill in generally|
+
+For more information on `Lumos`, please refer to https://github.com/nervosnetwork/lumos
