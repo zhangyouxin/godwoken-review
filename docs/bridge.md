@@ -13,7 +13,7 @@ For deposit and withdrawal operations on Godwoken, two options are available:
 
 ## Using GW-tools to Deposit
 
-To `deposit CKBs onto Layer 2, execute the following command in the proper directory: 
+To `deposit` CKBs onto Layer 2, execute the following command in the proper directory: 
 
 	Use `--help` to view the available commands.
 
@@ -52,7 +52,7 @@ OPTIONS:
 ```
 </details>
 
-Replace with the values matching one's own account and information. 
+	Replace with the values matching one's own account and information. 
 
 ```shell
 Note: If the user applied the quick mode with godwoken-kicker, which already has a deposit function, the user can carry out the deposit operation directly on https://localhost:6100/.
@@ -79,9 +79,9 @@ For more information on the CKB RPC, refer to [CKB Wiki](https://github.com/nerv
 
 There are **two steps** to withdraw assets from layer 2 to layer 1 on Godwoken, the first step is to make a withdrawal request. In comparison to deposits, withdrawals require more time. When a withdrawal is made to layer 1, the withdrawal depends on layer 2, but layer 2 has a lower level of security and for this reason, more confirmations will be required to ensure that security remains reliable.  From the time the withdrawal is made, it takes approximately 5 days until the amount of funds is actually released at layer 1.
 
-To withdraw funds from layer 2 to layer 1, execute the following `gw-tools` withdraw command, replace the variables with the values needed:
+To `withdraw` funds from layer 2 to layer 1, execute the following `gw-tools` withdraw command, replace the variables with the values needed:
 
-Use `--help` to view the available commands.
+	Use `--help` to view the available commands.
 
 ```shell
 cargo run --bin gw-tools -- withdraw --help
@@ -119,7 +119,7 @@ OPTIONS:
 ```
 </details>
 
-For more information on Godwoken RPC, refer to [Godwoken Public Network](/#godwoken-public-networks).
+For more information on `Godwoken RPC`, refer to [Godwoken Public Network](/#godwoken-public-networks).
 
 ### <code>gw-tool withdraw</code> Subcommands
 
@@ -136,11 +136,15 @@ For more information on Godwoken RPC, refer to [Godwoken Public Network](/#godwo
 
 ## Unlocking the Funds to Complete Withdrawal Process
 
-Withdrawing funds from Godwoken is a two-step process. Step one initiates the withdrawal and step two releases the funds. Godwoken uses an optimistic rollup architecture that permits only one honest node in the network. All this provides a very secure foundation for Layer 2, but comes at the cost of a 5-day 'challenge period' when exiting from Layer 2. This is a period where the Layer 2 network operator gets time to examine and flag up any potential problems with malicious transactions and roll back if necessary. The five-day challenge period will begin once the withdrawal process has commenced. The five-day time interval is a bit long but necessary. 
+Withdrawing funds from Godwoken is a **two-step** process. Step one initiates the withdrawal and step two releases the funds. 
 
-To unlock the withdrawal cells to normal ckb cells and to perform common Layer2 actions, the [`account-cli tool`](https://github.com/nervosnetwork/godwoken-examples/tree/develop/packages/tools) will be applied. Execute the `account-cli tool` unlock command:
+Godwoken uses an optimistic rollup architecture that permits only one honest node in the network. All this provides a very secure foundation for Layer 2, but comes at the cost of a **5-day** 'challenge period' when exiting from Layer 2. This is a period where the Layer 2 network operator gets time to examine and flag up any potential problems with malicious transactions and roll back if necessary. The five-day challenge period will begin once the withdrawal process has commenced. The five-day time interval is a bit long but necessary. 
 
-Use `--help` to view the available commands.
+To `unlock` the withdrawal cells to normal ckb cells and to perform common Layer2 actions, the [`account-cli tool`](https://github.com/nervosnetwork/godwoken-examples/tree/develop/packages/tools) will be applied. 
+
+Execute the `account-cli tool` unlock command:
+
+	Use `--help` to view the available commands.
 
 ```shell
 # devnet
