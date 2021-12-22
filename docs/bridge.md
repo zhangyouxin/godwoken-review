@@ -13,9 +13,9 @@ For deposit and withdrawal operations on Godwoken, two options are available:
 
 ## Using GW-tools to Deposit
 
-To `deposit` CKBs onto Layer 2, execute the following command in the proper directory: 
+To `deposit` CKBs onto Layer 2, user need to execute the `gw-tools` deposit command in the command line. If the user applied the quick mode with godwoken-kicker, which already has a deposit function, the user can carry out the deposit operation directly on http://localhost:6100/ .
 
-	Use `--help` to view the available commands.
+Use `--help` to view the available commands, and replace the variables with the values matching one's own account and information. 
 
 ```shell
 cargo run --bin gw-tools -- deposit-ckb --help
@@ -52,11 +52,8 @@ OPTIONS:
 ```
 </details>
 
-	Replace with the values matching one's own account and information. 
 
-```shell
-Note: If the user applied the quick mode with godwoken-kicker, which already has a deposit function, the user can carry out the deposit operation directly on https://localhost:6100/.
-```
+Note: 
 
 For more information on the CKB RPC, refer to [CKB Wiki](https://github.com/nervosnetwork/ckb/wiki/Chains)
 
@@ -81,7 +78,7 @@ There are **two steps** to withdraw assets from layer 2 to layer 1 on Godwoken, 
 
 To `withdraw` funds from layer 2 to layer 1, execute the following `gw-tools` withdraw command, replace the variables with the values needed:
 
-	Use `--help` to view the available commands.
+Use `--help` to view the available commands.
 
 ```shell
 cargo run --bin gw-tools -- withdraw --help
@@ -144,7 +141,7 @@ To `unlock` the withdrawal cells to normal ckb cells and to perform common Layer
 
 Execute the `account-cli tool` unlock command:
 
-	Use `--help` to view the available commands.
+Use `--help` to view the available commands.
 
 ```shell
 # devnet
@@ -188,4 +185,8 @@ Note: The private key you pass to `unlock` command needs to be the same as the o
 |rpc 			|The rpc address of CKB, with a default value|
 |indexer-path 		|The path of Lumos indexer, with a default value, no need to fill in generally|
 
-For more information on `Lumos`, please refer to https://github.com/nervosnetwork/lumos
+For more information on `Lumos`, please refer to https://github.com/nervosnetwork/lumos . 
+
+## Code Example
+
+For developers who need additional code details, refer to this repository for more detailed examples：https://github.com/classicalliu/gw-demos 。
