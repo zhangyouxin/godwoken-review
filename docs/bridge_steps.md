@@ -22,7 +22,7 @@ Note: If the user applied the quick mode with godwoken-kicker, which already has
 
 ### Withdrawal
 
-There are **two steps** to withdraw assets from level 2 to level 1 on Godwoken, the first step is to make a withdrawal request. In comparison to deposits, withdrawals require more time. When a withdrawal is made to layer 1, the withdrawal depends on layer 2, but layer 2 has a lower level of security and for this reason, more confirmations will be required to ensure that security remains reliable.  From the time the withdrawal is made, it takes approximately 5 days until the amount of funds is actually released at level 1.
+There are **two steps** to withdraw assets from layer 2 to layer 1 on Godwoken, the first step is to make a withdrawal request. In comparison to deposits, withdrawals require more time. When a withdrawal is made to layer 1, the withdrawal depends on layer 2, but layer 2 has a lower level of security and for this reason, more confirmations will be required to ensure that security remains reliable.  From the time the withdrawal is made, it takes approximately 5 days until the amount of funds is actually released at layer 1.
 
 To withdraw funds from layer 2 to layer 1, execute the following `gw-tools` withdraw command, replace the variables with the values needed:
 
