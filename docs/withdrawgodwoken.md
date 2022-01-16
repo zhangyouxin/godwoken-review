@@ -14,7 +14,6 @@ The following prerequisites apply for withdrawing assets from Godwoken.
 	- MetaMask
 	- NodeJS >= v14
 
---- 
 
 ## Process of Assets Withdrawal
 
@@ -232,7 +231,6 @@ Here is an example:
 
  </details>
 
- ---
 
 #### Cell Dependencies
 
@@ -261,7 +259,6 @@ Cell Dependencies, or cell Deps, contain `rollup cellDep`, `lock cellDep` and `w
  }
  ```
 
- ---
 
  ## Reference
 
