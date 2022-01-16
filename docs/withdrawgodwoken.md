@@ -46,8 +46,8 @@ Note: some information, such as the sender's layer 2 address and the receiver's 
 
  In the sample above: 
 
- 	 - `owner_lock_hash` is form the owner of layer 1
- 	 - `account_script_hash`is the `address` of layer 2
+ - `owner_lock_hash` is form the owner of layer 1
+ - `account_script_hash`is the `address` of layer 2
 
 To calculate the hashes:
 
