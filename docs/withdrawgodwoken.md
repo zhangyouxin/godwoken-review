@@ -1,4 +1,3 @@
-withdrawgodwoken.md
 ---
 id: withdrawgodwoken
 title: Withdrawing Assets from Godwoken
