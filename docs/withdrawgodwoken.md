@@ -108,7 +108,7 @@ To calculate the hashes:
  }
  ```
 
-A cell with assets will then be created on layer 1, so as to list all the withdrawals cells that requested by the account on layer 2. 
+A cell with assets will then be created on layer 1, so as to list all the withdrawal cells that requested by the account on layer 2. 
 Here it is named `AliceL2`, and for querying one can use `@ckb-lumos/ckb-indexer', as follows:
 
 ```ts
