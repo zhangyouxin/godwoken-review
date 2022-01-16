@@ -80,9 +80,6 @@ To calculate the hashes:
 
  The value returned should be：
 
- <details>
-   <summary markdown="span">return value of gw_get_withdrawal</summary>
-
  ```json
  {
    "jsonrpc": "2.0",
@@ -110,8 +107,6 @@ To calculate the hashes:
    }
  }
  ```
-
- </details>
 
 A cell with assets will then be created on layer 1, so as to list all the withdrawals cells that requested by the account on layer 2. 
 Here it is named `AliceL2', and for querying one can use `@ckb-lumos/ckb-indexer', as follows:
