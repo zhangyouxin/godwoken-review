@@ -139,8 +139,6 @@ Here it is named `AliceL2`, and for querying one can use `@ckb-lumos/ckb-indexer
 
 Here is an example:
 
- <details>
-   <summary markdown="span">example</summary>
 
  ```json5
  {
@@ -223,8 +221,6 @@ Here is an example:
    witnesses: ["0x1c000000100000001c0000001c000000080000000000000004000000", "..."],
  }
  ```
-
- </details>
 
 
 #### Cell Dependencies
