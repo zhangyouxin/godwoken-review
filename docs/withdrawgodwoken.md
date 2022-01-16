@@ -21,7 +21,7 @@ The following prerequisites apply for withdrawing assets from Godwoken.
 
 First, call the [gw_submit_withdrawal_request](https://github.com/nervosnetwork/godwoken/blob/develop/docs/RPC.md#method-gw_submit_withdrawal_request) RPC method to burn assets on layer 2 chain, and Godwoken at the same time creates assets on layer 1, which can be unlocked later by receiving the address.
 
-Note: some information, such as the sender's layer 2 address and the receiver's layer 1 address, are required as parameters when submitting such a request. For further details see [example](https://github.com/classicalliu/gw-demos/blob/d2780e4c20824796f21a8277ea357dcce34c8e9f/src/withdrawal.ts?_pjax=%23js-repo-pjax-container%2C%20div%5Bitemtype%3D%22http%3A%2F%2Fschema.org%2FSoftwareSourceCode%22%5D%20main%2C%20%5Bdata-pjax- container%5D#L26-L126).
+Note: some information, such as the sender's layer 2 address and the receiver's layer 1 address, are required as parameters when submitting such a request. For further details see [example](https://github.com/classicalliu/gw-demos/blob/d2780e4c20824796f21a8277ea357dcce34c8e9f/src/withdrawal.ts?_pjax=%23js-repo-pjax-container%2C%20div%5Bitemtype%3D%22http%3A%2F%2Fschema.org%2FSoftwareSourceCode%22%5D%20main%2C%20%5Bdata-pjax-container%5D#L26-L126).
 
 ```json5
  {
