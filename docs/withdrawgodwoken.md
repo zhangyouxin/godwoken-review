@@ -19,7 +19,7 @@ The following prerequisites apply for withdrawing assets from Godwoken.
 
 ### Step 1. Submit a Withdrawal Request to Godwoken
 
-First, call the [gw_submit_withdrawal_request](https://github.com/nervosnetwork/godwoken/blob/develop/docs/RPC.md#method-gw_submit_withdrawal_request) RPC method to burn assets on layer 2 chain, and Godwoken at the same time creates assets on layer 1, which can be unlocked later by receiving the address.
+First, call the [gw_submit_withdrawal_request](https://github.com/nervosnetwork/godwoken/blob/develop/docs/RPC.md#method-gw_submit_withdrawal_request) RPC method to burn assets on layer 2 chain, and Godwoken at the same time creates assets on layer 1, which can be unlocked later by the receiver address.
 
 Note: some information, such as the sender's layer 2 address and the receiver's layer 1 address, are required as parameters when submitting such a request. For further details see [example](https://github.com/classicalliu/gw-demos/blob/d2780e4c20824796f21a8277ea357dcce34c8e9f/src/withdrawal.ts?_pjax=%23js-repo-pjax-container%2C%20div%5Bitemtype%3D%22http%3A%2F%2Fschema.org%2FSoftwareSourceCode%22%5D%20main%2C%20%5Bdata-pjax-container%5D#L26-L126).
 
@@ -44,10 +44,10 @@ Note: some information, such as the sender's layer 2 address and the receiver's 
  }
  ```
 
- In the sample above: 
+ In the sample above:
 
- - `owner_lock_hash` is form the owner of layer 1
- - `account_script_hash`is the `address` of layer 2
+- `owner_lock_hash` is from the owner of layer 1
+- `account_script_hash` is from the `address` of layer 2
 
 To calculate the hashes:
 
@@ -74,11 +74,12 @@ To calculate the hashes:
    "id": 2,
    "jsonrpc": "2.0",
    "method": "gw_get_withdrawal",
+   //REPLACE PARAMS BELOW WITH YOUR WITHDRAWAL HASH
    "params": ["0xb57c6da2f803413b5781f8c6508320a0ada61a2992bb59ab38f16da2d02099c1"]
  }
  ```
 
- The value returned should be：
+ The value returned should be like：
 
  ```json
  {
@@ -109,7 +110,7 @@ To calculate the hashes:
  ```
 
 A cell with assets will then be created on layer 1, so as to list all the withdrawal cells that requested by the account on layer 2. 
-Here it is named `AliceL2`, and for querying one can use `@ckb-lumos/ckb-indexer', as follows:
+Here it is named `AliceL2`, and for querying one can use `@ckb-lumos/ckb-indexer`, as follows:
 
 ```ts
  const getWithdrawalCellSearchParams = function (AliceL2: string) {
@@ -225,7 +226,9 @@ Here is an example:
 
 #### Cell Dependencies
 
-Cell Dependencies, or cell Deps, contain `rollup cellDep`, `lock cellDep` and `withdraw cellDep`. If there are any sudt withdrawals, be sure to add `sudt cellDep`, as well as the other deps required by the receiver lock. `withdraw cellDep` and `sudt cellDep` can be obtained from some static config files, and `lock cellDep` relies on the type of lock to be used. The `omnilock` is used in the example, hence the `omnilock cellDep` is added. For the`rollup cellDep`, it needs to be obtained from the mem pool:
+A [CKB Cell](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0022-transaction-structure/0022-transaction-structure.md#Celll) contains [Scripts](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0022-transaction-structure/0022-transaction-structure.md#Script), execution of `Scripts` depends on deployed codes. [Cell dependencies](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0022-transaction-structure/0022-transaction-structure.md#celldep) is used to provide the codes.
+
+In this transaction, cell Deps contain `rollup cellDep`, `lock cellDep` and `withdraw cellDep`. If there are any sudt withdrawals, be sure to add `sudt cellDep`, as well as the other deps required by the receiver lock. `withdraw cellDep` and `sudt cellDep` can be obtained from some static config files, and `lock cellDep` relies on the type of lock to be used. The `omnilock` is used in the example, hence the `omnilock cellDep` is added. For the`rollup cellDep`, it needs to be obtained from the mem pool:
 
 ```ts
  async function getRollupCellDep(): Promise<CellDep> {
