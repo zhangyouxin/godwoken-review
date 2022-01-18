@@ -69,7 +69,7 @@ To calculate the hashes:
 
  Once the RPC request has been successfully submitted, the hash value returned can be used to query the withdrawal status by calling the [gw_get_withdrawal](https://github.com/nervosnetwork/godwoken/blob/develop/docs/RPC.md#method-gw_get_withdrawal):
 
- ```json
+ ```json5
  {
    "id": 2,
    "jsonrpc": "2.0",
@@ -81,7 +81,7 @@ To calculate the hashes:
 
  The value returned should be like：
 
- ```json
+ ```json5
  {
    "jsonrpc": "2.0",
    "id": 2,
